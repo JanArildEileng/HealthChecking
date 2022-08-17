@@ -1,27 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace HealthChecking.LoggingService.Controllers
+namespace HealthChecking.TilgangService.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class TilgangServiceController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<TilgangServiceController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public TilgangServiceController(ILogger<TilgangServiceController> logger)
         {
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet(Name = "GetTilganger")]
+        public IEnumerable<Tilganger> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 5).Select(index => new Tilganger
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),

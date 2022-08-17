@@ -1,6 +1,6 @@
 namespace HealthChecking.TilgangService
 {
-    public class WeatherForecast
+    public class Tilganger
     {
         public DateTime Date { get; set; }
 

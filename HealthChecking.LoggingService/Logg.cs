@@ -1,6 +1,6 @@
 namespace HealthChecking.LoggingService
 {
-    public class WeatherForecast
+    public class Logg
     {
         public DateTime Date { get; set; }
 

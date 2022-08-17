@@ -1,6 +1,5 @@
 ﻿namespace HealthChecking.Shared.Models
 {
-    public class Tilganger
-    {
-    }
+    public record Tilganger(DateTime Opprettet);
+    
 }

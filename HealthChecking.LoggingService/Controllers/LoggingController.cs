@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
+using HealthChecking.Shared.Models;
+
 namespace HealthChecking.LoggingService.Controllers
 {
     [ApiController]
@@ -9,21 +11,25 @@ namespace HealthChecking.LoggingService.Controllers
       
         private readonly ILogger<LoggingController> _logger;
 
+        static List<LoggInnhold> loggInnholdListe = new();
+
         public LoggingController(ILogger<LoggingController> logger)
         {
             _logger = logger;
         }
 
         [HttpGet(Name = "GetLogger")]
-        public IEnumerable<Logg> Get()
+        public ActionResult<List<LoggInnhold>> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new Logg
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-              
-            })
-            .ToArray();
+            return Ok(loggInnholdListe);
         }
+
+        [HttpPost(Name = "PostLogg")]
+        public ActionResult Post(LoggInnhold loggInnhold)
+        {
+            loggInnholdListe.Add(loggInnhold with { opprettet = DateTime.Now });
+            return Ok();
+        }
+
     }
 }

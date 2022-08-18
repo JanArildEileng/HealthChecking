@@ -15,6 +15,14 @@ static public class AddServiceCollectionRefitClients
                     c.BaseAddress = new Uri("https://localhost:7313/");
                 });
 
+        services.AddRefitClient<ILoggingApi>()
+                .ConfigureHttpClient(c =>
+                {
+                    c.BaseAddress = new Uri("https://localhost:7156/");
+                });
+
+
+
         return services;
     }
 

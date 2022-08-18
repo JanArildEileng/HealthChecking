@@ -11,7 +11,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMediatorServices();
 builder.Services.AddInfrastructure();
-builder.Services.AddRefitClients();
+builder.Services.AddRefitClients(builder.Configuration);
 
 
 

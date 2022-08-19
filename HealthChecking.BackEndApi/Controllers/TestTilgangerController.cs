@@ -23,5 +23,17 @@ namespace HealthChecking.BackEndApi.Controllers
         {
             return Ok(await mediator.Send(new GetTilganger() { }));
         }
+
+        [HttpGet("Navn", Name = "GetTilgang")]
+        public async Task<ActionResult<Tilganger>> GetTilgang(string Navn)
+        {
+            var tilgang = await mediator.Send(new GetTilgang(Navn));
+            if (tilgang == null)
+                return NotFound($"{Navn} ikke funnet i tilgangskontroll");
+
+            return Ok(tilgang);
+        }
+
+
     }
 }

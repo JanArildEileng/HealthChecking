@@ -1,7 +1,7 @@
 ﻿using HealthChecking.RefitApi;
 using Refit;
 
-namespace HealthChecking.BackEndApi.Application;
+namespace HealthChecking.BackEndApi.Infrastructure;
 
 static public class AddServiceCollectionRefitClients
 {

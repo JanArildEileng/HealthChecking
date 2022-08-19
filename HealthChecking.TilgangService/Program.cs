@@ -15,6 +15,8 @@ builder.Services.AddInfrastructure();
 
 builder.Services.AddAutoMapper(typeof(HealthChecking.TilgangService.Application.AutoMapperProfiles.TilgangProfile));
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,5 +31,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+app.MapHealthChecks("/healthz");
+
 
 app.Run();

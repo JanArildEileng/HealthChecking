@@ -3,14 +3,14 @@ using HealthChecking.RefitApi;
 using HealthChecking.Shared.Models;
 using Refit;
 
-namespace HealthChecking.BackEndApi.Infrastructure.InteralServices;
+namespace HealthChecking.BackEndApi.Infrastructure.InternalServices;
 
 public class TilgangService : ITilgangService
 {
     private readonly ILogger<TilgangService> logger;
     private readonly ITilgangApi tilgangApi;
 
-    public TilgangService(ILogger<TilgangService> logger,ITilgangApi tilgangApi )
+    public TilgangService(ILogger<TilgangService> logger, ITilgangApi tilgangApi)
     {
         this.logger = logger;
         this.tilgangApi = tilgangApi;

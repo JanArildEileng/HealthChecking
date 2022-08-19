@@ -1,4 +1,6 @@
 using HealthChecking.BackEndApi.Application;
+using HealthChecking.BackEndApi.Health;
+using HealthChecking.BackEndApi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,7 @@ builder.Services.AddInfrastructure();
 builder.Services.AddRefitClients(builder.Configuration);
 
 
-
+builder.Services.AddHealthAllChecks();
 
 
 var app = builder.Build();
@@ -31,5 +33,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHealthChecks("/healthz");
 app.Run();

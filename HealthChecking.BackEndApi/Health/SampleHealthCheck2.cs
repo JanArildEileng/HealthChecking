@@ -2,12 +2,12 @@
 
 namespace HealthChecking.BackEndApi.Health;
 
-public class SampleHealthCheck : IHealthCheck
+public class SampleHealthCheck2 : IHealthCheck
 {
     public Task<HealthCheckResult> CheckHealthAsync(
         HealthCheckContext context, CancellationToken cancellationToken = default)
     {
-        var isHealthy = false;
+        var isHealthy = true;
 
         // ...
 

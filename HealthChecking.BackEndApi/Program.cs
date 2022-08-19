@@ -1,6 +1,8 @@
 using HealthChecking.BackEndApi.Application;
 using HealthChecking.BackEndApi.Health;
 using HealthChecking.BackEndApi.Infrastructure;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +18,11 @@ builder.Services.AddInfrastructure();
 builder.Services.AddRefitClients(builder.Configuration);
 
 
-builder.Services.AddHealthAllChecks();
+builder.Services.AddHealthAllChecks(builder.Configuration);
+
+builder.Services
+           .AddHealthChecksUI()
+           .AddInMemoryStorage();
 
 
 var app = builder.Build();
@@ -33,5 +39,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHealthChecks("/healthz");
+
+app.MapHealthChecks("/healthz", new HealthCheckOptions
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
+app.UseRouting().UseEndpoints(config => config.MapHealthChecksUI());
+
 app.Run();

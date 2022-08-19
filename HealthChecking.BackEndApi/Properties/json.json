@@ -1,0 +1,32 @@
+{
+  "status": "Healthy",
+  "totalDuration": "00:00:00.1395004",
+  "entries": {
+    "LoggingService": {
+      "data": {},
+      "duration": "00:00:00.1394209",
+      "status": "Healthy",
+      "tags": []
+    },
+    "TilgangApiService": {
+      "data": {},
+      "duration": "00:00:00.1382238",
+      "status": "Healthy",
+      "tags": []
+    },
+    "Sample-1": {
+      "data": { "Date": "2022-08-19T14:50:32.5453166+02:00" },
+      "description": "A healthy result. Seconds is even",
+      "duration": "00:00:00.0001004",
+      "status": "Healthy",
+      "tags": []
+    },
+    "Sample-2": {
+      "data": {},
+      "description": "A healthy result.",
+      "duration": "00:00:00.0000018",
+      "status": "Healthy",
+      "tags": []
+    }
+  }
+}

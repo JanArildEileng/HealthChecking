@@ -1,4 +1,5 @@
 using HealthChecking.TilgangService.Application;
+using HealthChecking.TilgangService.Health;
 using HealthChecking.TilgangService.Infrastucture;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -17,7 +18,9 @@ builder.Services.AddInfrastructure();
 
 builder.Services.AddAutoMapper(typeof(HealthChecking.TilgangService.Application.AutoMapperProfiles.TilgangProfile));
 
-builder.Services.AddHealthChecks();
+builder.Services.AddHealthAllChecks(builder.Configuration);
+
+
 
 var app = builder.Build();
 

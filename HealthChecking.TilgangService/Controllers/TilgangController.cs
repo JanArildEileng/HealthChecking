@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using HealthChecking.TilgangService.Application.Queries;
 using HealthChecking.Shared.Models;
+using HealthChecking.TilgangService.Application.Notifications;
 
 namespace HealthChecking.TilgangService.Controllers
 {
@@ -24,7 +25,12 @@ namespace HealthChecking.TilgangService.Controllers
         [HttpGet(Name = "GetTilganger")]
         public async Task<ActionResult<IEnumerable<Tilganger>>> GetTilganger()
         {
-            return Ok(await mediator.Send(new GetTilganger() { }));
+
+            var result = await mediator.Send(new GetTilganger() { });
+
+            await mediator.Publish(new TestNotifications());
+
+            return Ok(result);
         }
     }
 }
